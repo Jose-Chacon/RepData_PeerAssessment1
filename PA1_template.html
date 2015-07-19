@@ -179,9 +179,13 @@ hist(df1[,1], main = &quot;Total steps per day&quot;, xlab = &quot;Steps&quot;, 
 <h4>What is the impact of imputing missing data on the estimates of the total daily number of steps</h4>
 <p>Having more observations per variable with inflate the calculations.</p>
 <pre class="r"><code># Mean from data with replaced missing values
-steps.daily.nona.mean &lt;- mean(df1$steps)</code></pre>
+steps.daily.nona.mean &lt;- mean(df1$steps)
+print(steps.daily.nona.mean)</code></pre>
+<pre><code>## [1] 1444.439</code></pre>
 <pre class="r"><code># Median from data with replaced missing values
-steps.daily.nona.median &lt;- median(df1$steps)</code></pre>
+steps.daily.nona.median &lt;- median(df1$steps)
+print(steps.daily.nona.median)</code></pre>
+<pre><code>## [1] 0</code></pre>
 </div>
 <div id="part-5-are-there-differences-in-activity-patterns-between-weekdays-and-weekends" class="section level4">
 <h4>Part 5: Are there differences in activity patterns between weekdays and weekends?</h4>
