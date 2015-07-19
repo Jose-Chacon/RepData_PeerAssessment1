@@ -52,7 +52,7 @@ df$date <- as.Date(df$date)
 tot.steps.day <- aggregate(steps  ~ date, data = df, FUN = "sum")
 hist(tot.steps.day$steps, main = "Total steps per day", xlab = "Steps", ylab = "Frequency")
 
-![Histogram: Total steps per day](figures/Plot1.png)
+![Histogram: Total steps per day](figure/Plot1.png)
 
 #####Step 3: Calculate and report the mean and median of the total number of steps taken per day
 
@@ -75,7 +75,7 @@ steps.interval.average <- aggregate(steps  ~ interval, data = df, FUN = "mean")
 # Plot intervals and average steps
 plot(steps.interval.average$steps,steps.interval.average$inteval, type = "l", xlab = "steps" , ylab = "interval")
 
-![Plot steps per interval](figures/Plot2.png)
+![Plot steps per interval](figure/Plot2.png)
 
 
 
@@ -118,7 +118,7 @@ df1$steps[is.na(df1$steps)] <- steps.interval.average$steps[match(df1$interval,s
 tot.steps.day <- aggregate(steps  ~ date, data = df1, FUN = "sum")
 hist(tot.steps.day$steps, main = "Total steps per day (without NA)", xlab = "Steps", ylab = "Frequency")
 
-![Histogram: Total steps per day with no NA](figures/Plot3.png)
+![Histogram: Total steps per day with no NA](figure/Plot3.png)
 
 
 
@@ -171,4 +171,4 @@ par(mfrow = c(2, 1), mar = c(0, 4, 2, 1))
 plot(weekend, type = "l", main = "Weekend" ,col = "blue3")
 plot(weekday, type = "l", main = "Weekday", col = "blue3")
 
-![Plot: Average stepes weekend and weekdays](figures/Plot4.png)
+![Plot: Average stepes weekend and weekdays](figure/Plot4.png)
