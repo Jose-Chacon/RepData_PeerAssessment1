@@ -37,11 +37,13 @@ The dataset is stored in a comma-separated-value (CSV) file and there are a tota
 
 
 # Load data from csv file keeping headers
+```{r}
 df <- read.csv("./activity.csv", header = TRUE, stringsAsFactors = FALSE)
-
+```
 # Transform text date into Date type class
+```{r}
 df$date <- as.Date(df$date)
-
+```
 
 #### Part 2: What is mean total number of steps taken per day?
 #####Step 1: Calculate the total number of steps taken per day
@@ -49,20 +51,23 @@ df$date <- as.Date(df$date)
 
 
 # Total steps per day ommiting missing values
+```{r}
 tot.steps.day <- aggregate(steps  ~ date, data = df, FUN = "sum")
 hist(tot.steps.day$steps, main = "Total steps per day", xlab = "Steps", ylab = "Frequency")
-
+```
 ![Histogram: Total steps per day](figure/plot1.png)
 
 #####Step 3: Calculate and report the mean and median of the total number of steps taken per day
 
 
 # Mean total number of steps
+```{r}
 steps.daily.mean <- mean(tot.steps.day$steps)
-
+```
 # Median total numbre of steps
+```{r}
 steps.daily.median <- median(tot.steps.day$steps)
-
+```
 
 #### Part 3: What is the average daily activity pattern?
 
@@ -70,19 +75,24 @@ steps.daily.median <- median(tot.steps.day$steps)
 
 
 # Average steps per interval
+```{r}
 steps.interval.average <- aggregate(steps  ~ interval, data = df, FUN = "mean")
-
+```
 # Plot intervals and average steps
-plot(steps.interval.average$steps,steps.interval.average$inteval, type = "l", xlab = "steps" , ylab = "interval")
+```{r}
+plot(steps.interval.average$steps,steps.interval.average$inteval, 
+     type = "l", xlab = "steps" , ylab = "interval")
+```
 
 ![Plot steps per interval](figure/plot2.png)
 
 #####Step 2: Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
-```{r, echo=TRUE}
-# Maximun number of steps
-steps.interval.average[which.max( steps.interval.average[,2] ),]
 
+# Maximun number of steps
+```{r}
+steps.interval.average[which.max( steps.interval.average[,2] ),]
+```
 
 
 ####Part 4: Imputing missing values
@@ -94,8 +104,9 @@ Note that there are a number of days/intervals where there are missing values (c
 
 
 # Missing values quantity
+```{r}
 length(which(is.na(df)))
-
+```
 
 
 #####Step 2: Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
@@ -105,17 +116,19 @@ length(which(is.na(df)))
 Fill missing values with mean from average observations per interval
 
 # Fill missing values with mean from all observations
+```{r}
 df1 <- df
 df1$steps[is.na(df1$steps)] <- steps.interval.average$steps[match(df1$interval,steps.interval.average$interval)]
-
+```
 
 #####Step 4: Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day.  
 
 
 # Plot histogram by daily total steps
+```{r}
 tot.steps.day <- aggregate(steps  ~ date, data = df1, FUN = "sum")
 hist(tot.steps.day$steps, main = "Total steps per day (without NA)", xlab = "Steps", ylab = "Frequency")
-
+```
 ![Histogram: Total steps per day with no NA](figure/plot3.png)
 
 ####Do these values differ from the estimates from the first part of the assignment? 
@@ -127,13 +140,15 @@ Mean and Median were increased and now distribution seens more like bell curve.
 
 
 # Mean from data with replaced missing values
+```{r}
 print(mean(tot.steps.day$steps))
-
+```
 
 
 # Median from data with replaced missing values
+```{r}
 print(median(tot.steps.day$steps))
-
+```
 
 
 ####Part 5: Are there differences in activity patterns between weekdays and weekends?
@@ -143,15 +158,18 @@ For this part the weekdays() function may be of some help here. Use the dataset 
 
 
 # Indentify weekdays and weekends
+```{r}
 weekdays1 <- c('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday')
 df1$weekdays <- c('weekend', 'weekday')[(weekdays(df1$date) %in% weekdays1)+1L]
-
+```
 # Observations during weekdays
+```{r}
 weekday <- subset (df1, weekdays == "weekday" )
-
+```
 # Observations during weekends
+```{r}
 weekend <- subset (df1, weekdays == "weekend" )
-
+```
 
 
 
@@ -160,13 +178,14 @@ weekend <- subset (df1, weekdays == "weekend" )
 
 
 # Plot by intervals, average steps by weekday
+```{r}
 weekday <- aggregate(steps  ~ interval, data = weekday, FUN = "mean")
 weekend <- aggregate(steps  ~ interval, data = weekend, FUN = "mean")
 
 par(mfrow = c(2, 1), mar = c(0, 4, 2, 1))
 plot(weekend, type = "l", main = "Weekend" ,col = "blue3")
 plot(weekday, type = "l", main = "Weekday", col = "blue3")
-
+```
 ![Plot: Average steps weekend and weekdays](figure/plot4.png)
 
 

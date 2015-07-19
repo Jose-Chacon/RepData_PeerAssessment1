@@ -101,7 +101,7 @@ Project1 <- function{
      weekday <- aggregate(steps  ~ interval, data = weekday, FUN = "mean")
      weekend <- aggregate(steps  ~ interval, data = weekend, FUN = "mean")
      
-     png(file="plot3.png",width=640,height=480)
+     png(file="plot4.png",width=640,height=480)
      par(mfrow = c(2, 1), mar = c(0, 4, 2, 1))
      plot(weekend, type = "l", main = "weekend" ,col = "blue3")
      plot(weekday, type = "l", main = "weekday", col = "blue3")
