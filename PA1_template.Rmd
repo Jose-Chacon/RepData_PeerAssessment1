@@ -58,10 +58,10 @@ hist(tot.steps.day$steps, main = "Total steps per day", xlab = "Steps", ylab = "
 
 ```{r, echo=TRUE}
 # Mean total number of steps
-steps.daily.mean <- mean(tot.steps.day$steps)
+print(mean(tot.steps.day$steps))
 
 # Median total numbre of steps
-steps.daily.median <- median(tot.steps.day$steps)
+print(median(tot.steps.day$steps))
 ```
 
 #### Part 3: What is the average daily activity pattern?

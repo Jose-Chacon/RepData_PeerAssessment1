@@ -120,10 +120,11 @@ hist(tot.steps.day$steps, main = &quot;Total steps per day&quot;, xlab = &quot;S
 <div id="step-3-calculate-and-report-the-mean-and-median-of-the-total-number-of-steps-taken-per-day" class="section level5">
 <h5>Step 3: Calculate and report the mean and median of the total number of steps taken per day</h5>
 <pre class="r"><code># Mean total number of steps
-steps.daily.mean &lt;- mean(tot.steps.day$steps)
-
-# Median total numbre of steps
-steps.daily.median &lt;- median(tot.steps.day$steps)</code></pre>
+print(mean(tot.steps.day$steps))</code></pre>
+<pre><code>## [1] 10766.19</code></pre>
+<pre class="r"><code># Median total numbre of steps
+print(median(tot.steps.day$steps))</code></pre>
+<pre><code>## [1] 10765</code></pre>
 </div>
 </div>
 <div id="part-3-what-is-the-average-daily-activity-pattern" class="section level4">
