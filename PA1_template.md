@@ -171,4 +171,6 @@ par(mfrow = c(2, 1), mar = c(0, 4, 2, 1))
 plot(weekend, type = "l", main = "Weekend" ,col = "blue3")
 plot(weekday, type = "l", main = "Weekday", col = "blue3")
 
-![Plot: Average stepes weekend and weekdays](figure/Plot4.png)
+![Plot: Average steps weekend and weekdays](figure/Plot4.png)
+
+
