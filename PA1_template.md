@@ -77,8 +77,6 @@ plot(steps.interval.average$steps,steps.interval.average$inteval, type = "l", xl
 
 ![Plot steps per interval](figure/plot2.png)
 
-
-
 #####Step 2: Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
 ```{r, echo=TRUE}
@@ -119,8 +117,6 @@ tot.steps.day <- aggregate(steps  ~ date, data = df1, FUN = "sum")
 hist(tot.steps.day$steps, main = "Total steps per day (without NA)", xlab = "Steps", ylab = "Frequency")
 
 ![Histogram: Total steps per day with no NA](figure/plot3.png)
-
-
 
 ####Do these values differ from the estimates from the first part of the assignment? 
 Yes, it differs.

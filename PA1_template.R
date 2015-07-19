@@ -20,8 +20,9 @@ Project1 <- function{
      
      # Total steps per day ommiting missing values
      tot.steps.day <- aggregate(steps  ~ date, data = df, FUN = "sum")
+     png(file="plot1.png",width=640,height=480)
      hist(tot.steps.day$steps, main = "Total steps per day", xlab = "Steps", ylab = "Frequency")
-     
+     dev.off()
      # Mean total number of steps
      steps.daily.mean <- mean(tot.steps.day$steps)
      
@@ -37,8 +38,9 @@ Project1 <- function{
      steps.interval.average <- aggregate(steps  ~ interval, data = df, FUN = "mean")
      
      # Plot intervals and average steps
+     png(file="plot2.png",width=640,height=480)
      plot(steps.interval.average$steps,steps.interval.average$inteval, type = "l", xlab = "steps" , ylab = "interval")
-     
+     dev.off()
      # Maximun number of steps
      steps.interval.average[which.max( steps.interval.average[,2] ),]
      
@@ -66,7 +68,9 @@ Project1 <- function{
      
      # Plot histogram by daily total steps
      tot.steps.day <- aggregate(steps  ~ date, data = df1, FUN = "sum")
+     png(file="plot3.png",width=640,height=480)
      hist(tot.steps.day$steps, main = "Total steps per day (without NA)", xlab = "Steps", ylab = "Frequency")
+     dev.off()
      
      # Mean from data with replaced missing values
      print(mean(tot.steps.day$steps))
@@ -97,9 +101,11 @@ Project1 <- function{
      weekday <- aggregate(steps  ~ interval, data = weekday, FUN = "mean")
      weekend <- aggregate(steps  ~ interval, data = weekend, FUN = "mean")
      
+     png(file="plot3.png",width=640,height=480)
      par(mfrow = c(2, 1), mar = c(0, 4, 2, 1))
      plot(weekend, type = "l", main = "weekend" ,col = "blue3")
      plot(weekday, type = "l", main = "weekday", col = "blue3")
+     dev.off()
      
 }
 
