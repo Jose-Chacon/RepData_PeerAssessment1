@@ -87,7 +87,7 @@ print(median(tot.steps.day$steps))
 steps.interval.average <- aggregate(steps  ~ interval, data = df, FUN = "mean")
 
 # Plot intervals and average steps
-plot(steps.interval.average$steps,steps.interval.average$inteval, type = "l", xlab = "steps" , ylab = "interval")
+plot(steps.interval.average$steps,steps.interval.average$inteval, type = "l", xlab = "Steps" , ylab = "Interval")
 ```
 
 ![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png) 
